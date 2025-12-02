@@ -323,6 +323,9 @@ void WebServer::on_log(uint8_t level, const char *tag, const char *message, size
   (void) level;
   (void) tag;
   (void) message_len;
+
+  ESP_LOG_BUFFER_HEXDUMP(TAG, message, message_len, ESP_LOG_INFO);
+
   this->events_.try_send_nodefer(message, "log", millis());
 }
 #endif
